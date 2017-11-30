@@ -10,7 +10,7 @@ export class AuthService {
   isDev:boolean;
 
   constructor(private http:Http) {
-    this.isDev = false; // Change to false before deployment
+    this.isDev = true; // Change to false before deployment
   }
 
   registerUser(user){
@@ -24,7 +24,7 @@ export class AuthService {
   authenticateUser(user){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    let ep = this.prepEndpoint('users/authenticate1');
+    let ep = this.prepEndpoint('users/authenticate');
     return this.http.post(ep, user,{headers: headers})
       .map(res => res.json());
   }
@@ -65,10 +65,10 @@ export class AuthService {
   prepEndpoint(ep){
     if(this.isDev){
       console.log(true);
-      return ep;
+      return 'http://localhost:8080/'+ep;  
     } else {
       console.log(false);
-      return 'http://localhost:8080/'+ep;
+      return ep;
     }
   }
 }

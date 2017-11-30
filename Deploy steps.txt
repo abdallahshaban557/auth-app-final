@@ -1,0 +1,8 @@
+1- run "npm run build-prod" on the angular-src folder.
+2- make sure the github repo is fully updated.
+3- run "heroku login" and enter credentials.
+4- run "git push heroku master"
+
+PS: Remember to flip the flag in the auth.service.ts for development and prod environment
+
+"npm install cpx -g" must be run in CMD if new computer

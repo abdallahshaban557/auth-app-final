@@ -1,1 +1,24 @@
-body { padding-top: 70px; }
+body { 
+    padding-top: 70px; 
+}
+audio {
+    background-color: rgb(230, 27, 71);
+}
+
+.jumbotron
+{   
+    background-image:url('../images/background-filter.jpg');
+    min-height: 600px;
+    background-size: cover;
+    background-position: center top;
+    background: contain;
+    color : white; 
+ } 
+
+ .overlay-text { 
+    color: black; 
+    letter-spacing: -1px;  
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(216, 216, 223, 0.7);
+    padding: 5px; 
+ }
