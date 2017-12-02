@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {tokenNotExpired} from 'angular2-jwt';
@@ -11,7 +11,7 @@ export class AuthService {
   isDev:boolean;
 
   constructor(private http:Http) {
-    this.isDev = true; // Change to false before deployment
+    // this.isDev = true; // Change to false before deployment - Not needed since using isDeveMode now
     
   }
 
@@ -65,7 +65,7 @@ export class AuthService {
 
   //Adjust this once a production app is live and ready
   prepEndpoint(ep){
-    if(environment.production){
+    if(!isDevMode()){
       console.log(environment.production);
       return ep;  
     } else {
