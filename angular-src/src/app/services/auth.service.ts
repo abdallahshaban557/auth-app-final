@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {tokenNotExpired} from 'angular2-jwt';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable()
 export class AuthService {
@@ -11,6 +12,7 @@ export class AuthService {
 
   constructor(private http:Http) {
     this.isDev = true; // Change to false before deployment
+    
   }
 
   registerUser(user){
@@ -63,7 +65,7 @@ export class AuthService {
 
   //Adjust this once a production app is live and ready
   prepEndpoint(ep){
-    if(this.isDev){
+    if(environment.production){
       console.log(true);
       return 'http://localhost:8080/'+ep;  
     } else {
