@@ -7,10 +7,10 @@ audio {
 
 .jumbotron
 {   
-    background-image:url('../images/background-filter.jpg');
+    background-image:url('../images/background.JPG');
     min-height: 600px;
     background-size: cover;
-    background-position: center top;
+    background-position: center;
     background: contain;
     color : white; 
  } 
@@ -22,3 +22,11 @@ audio {
     background: rgba(216, 216, 223, 0.7);
     padding: 5px; 
  }
+
+ .vertical-center {
+    min-height: 80%;  /*Fallback for browsers do NOT support vh unit*/
+    min-height: 80vh; /*These two lines are counted as one :-)    */  
+  
+    display: flex;
+    align-items: flex-end;
+  }
