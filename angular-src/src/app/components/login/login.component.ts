@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       console.log(data);
       if(data.success){
         this.authService.storeUserData(data.token, data.user);
-        this.flashMessage.show('Welcome ' + this.username, {
+        this.flashMessage.show('Welcome ' + this.username.charAt(0).toUpperCase() + this.username.slice(1).toLowerCase(), {
           //cssClass: 'alert-success',
           classes: ['alert-success'],
           timeout: 5000});

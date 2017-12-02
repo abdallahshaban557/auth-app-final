@@ -8,9 +8,9 @@ const User = require('../models/user');
 // Register
 router.post('/register', (req, res, next) => {
   let newUser = new User({
-    name: req.body.name,
-    email: req.body.email,
-    username: req.body.username,
+    name: req.body.name.toLowerCase(),
+    email: req.body.email.toLowerCase(),
+    username: req.body.username.toLowerCase(),
     password: req.body.password
   });
 
@@ -25,7 +25,7 @@ router.post('/register', (req, res, next) => {
 
 // Authenticate
 router.post('/authenticate', (req, res, next) => {
-  const username = req.body.username;
+  const username = req.body.username.toLowerCase();
   const password = req.body.password;
 
   User.getUserByUsername(username, (err, user) => {
