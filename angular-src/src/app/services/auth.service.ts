@@ -65,10 +65,11 @@ export class AuthService {
 
   //Adjust this once a production app is live and ready
   prepEndpoint(ep){
-    if(!environment.production){
-      console.log(true);
+    if(environment.production){
+      console.log(environment.production);
       return 'http://localhost:8080/'+ep;  
     } else {
+      console.log(environment.production);
       console.log(false);
       return ep;
     }
