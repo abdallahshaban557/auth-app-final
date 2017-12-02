@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-prod": "ng build --prod --stats-json",
+    "build-prod": "ng build --prod env=prod --stats-json",
     "postbuild-prod": "cpx \"./dist/**/*\" ../public"
   },
   "private": true,

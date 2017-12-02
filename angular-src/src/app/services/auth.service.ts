@@ -67,11 +67,11 @@ export class AuthService {
   prepEndpoint(ep){
     if(environment.production){
       console.log(environment.production);
-      return 'http://localhost:8080/'+ep;  
+      return ep;  
     } else {
       console.log(environment.production);
       console.log(false);
-      return ep;
+      return 'http://localhost:8080/'+ ep;
     }
   }
 }
