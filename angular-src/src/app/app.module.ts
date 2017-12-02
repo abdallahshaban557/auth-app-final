@@ -22,10 +22,10 @@ import { MakeHerSleepComponent } from './components/make-her-sleep/make-her-slee
  
 const appRoutes: Routes = [
   {path:'', component : HomeComponent},
-  {path:'register', component : RegisterComponent},
+  // {path:'register', component : RegisterComponent},
   {path:'home', component : HomeComponent},
   {path:'login', component : LoginComponent},
-  {path:'profile', component : ProfileComponent, canActivate: [AuthGuard]},
+  // {path:'profile', component : ProfileComponent, canActivate: [AuthGuard]},
   {path:'make-her-sleep', component : MakeHerSleepComponent} //remember to add auth-guard
 ]
 
