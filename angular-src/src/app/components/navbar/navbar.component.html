@@ -8,8 +8,8 @@
     
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
-            <a class="nav-link" [routerLink]="['/login']">Login</a>
+          <li data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+            <a  class="nav-link" [routerLink]="['/login']" >Login</a>
           </li>
           <!-- <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
             <a class="nav-link" [routerLink]="['/register']">Register</a>
@@ -17,7 +17,16 @@
           <!-- <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
               <a class = "nav-link" [routerLink]="['/profile']">Profile</a>
           </li> -->
-          <li>
+          <li class="nav-item dropdown" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Things Made for you!
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" [routerLink]="['/make-her-sleep']">Making you sleep</a>
+              <a class="dropdown-item"  [routerLink]="['/music']">Music</a>
+            </div>
+          </li>
+          <li data-toggle="collapse" data-target=".navbar-collapse.show">
             <a *ngIf="authService.loggedIn()" class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
           </li>
         </ul>

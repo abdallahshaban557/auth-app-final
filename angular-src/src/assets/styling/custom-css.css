@@ -1,10 +1,9 @@
+/* Needed to create margin before navbar and body */
 body { 
     padding-top: 70px; 
 }
-audio {
-    background-color: rgb(230, 27, 71);
-}
 
+/* styling for .jumbotron in homescreen */
 .jumbotron
 {   
     background-image:url('../images/image.jpg');
@@ -13,8 +12,10 @@ audio {
     background-position: center;
     background: contain;
     color : white; 
+    
  }  
 
+ /* needed for overlay on .jumbotron in homescreen */
  .overlay-text { 
     color: black; 
     letter-spacing: -1px;  
@@ -23,10 +24,25 @@ audio {
     padding: 5px; 
  }
 
- .vertical-center {
+ 
+ .vertical-bottom {
     min-height: 80%;  /*Fallback for browsers do NOT support vh unit*/
     min-height: 80vh; /*These two lines are counted as one :-)    */  
   
     display: flex;
     align-items: flex-end;
   }
+
+  /* Needed to center items inside any div */
+  .vertical-center {
+      align-items: center;
+  }
+/* Needed to create spaces between collumns when they collapse */
+  @media (max-width: 991px){
+    .col-margin{
+        margin-bottom: 50px;
+    }  
+}
+
+/* Needed to create a row seperator between boostrap rows */
+.top-buffer { margin-top:50px; }
