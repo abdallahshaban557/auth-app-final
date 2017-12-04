@@ -26,8 +26,8 @@
               <a class="dropdown-item"  [routerLink]="['/music']">Music</a>
             </div>
           </li>
-          <li data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a *ngIf="authService.loggedIn()" class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
+          <li >
+            <a data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="authService.loggedIn()" class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
           </li>
         </ul>
       </div>
