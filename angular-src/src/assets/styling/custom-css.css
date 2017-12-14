@@ -3,8 +3,8 @@ body {
     padding-top: 70px; 
 }
 
-/* styling for .jumbotron in homescreen */
-.jumbotron
+/* styling for .jumbotron in homescreen. No longer needed */
+/* .jumbotron
 {   
     background-image:url('../images/image.jpg');
     min-height: 600px;
@@ -13,24 +13,24 @@ body {
     background: contain;
     color : white; 
     
- }  
+ }   */
 
- /* needed for overlay on .jumbotron in homescreen */
- .overlay-text { 
+ /* needed for overlay on .jumbotron in homescreen. No longer needed */
+ /* .overlay-text { 
     color: black; 
     letter-spacing: -1px;  
-    background: rgb(0, 0, 0); /*fallback color*/
+    background: rgb(0, 0, 0);
     background: rgba(216, 216, 223, 0.7);
     padding: 5px; 
- }
+ } */
 
  
  .vertical-bottom {
-    min-height: 80%;  /*Fallback for browsers do NOT support vh unit*/
-    min-height: 80vh; /*These two lines are counted as one :-)    */  
+    max-height: 80%;  /*Fallback for browsers do NOT support vh unit*/
+    max-height: 80vh; /*These two lines are counted as one :-)    */  
   
-    display: flex;
-    align-items: flex-end;
+    /* display: flex;
+    align-items: center;  */
   }
 
   /* Needed to center items inside any div */
@@ -47,4 +47,12 @@ body {
 /* Needed to create a row seperator between boostrap rows */
 .top-buffer { margin-top:50px; }
 
+/* Space between carousel and the homescreen items*/
+.homescreen-carousel-buffer { margin-top:20px; }
+
+/* space between boostrap rows at the top of the page */
 .toppage-buffer { margin-top:30px; }
+
+.carousel-inner img {
+    margin: auto;
+  }
