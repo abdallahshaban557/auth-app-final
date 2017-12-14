@@ -17,6 +17,7 @@ import { FlashMessagesService } from 'ngx-flash-messages';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { MakeHerSleepComponent } from './components/make-her-sleep/make-her-sleep.component';
+import { MusicComponent } from './components/music/music.component';
  
 const appRoutes: Routes = [
   {path:'', component : HomeComponent, canActivate: [AuthGuard]},
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
   {path:'home', component : HomeComponent ,canActivate: [AuthGuard]},
   {path:'login', component : LoginComponent},
   // {path:'profile', component : ProfileComponent, canActivate: [AuthGuard]},
-  {path:'make-her-sleep', component : MakeHerSleepComponent,canActivate: [AuthGuard]} //remember to add auth-guard
+  {path:'make-her-sleep', component : MakeHerSleepComponent,canActivate: [AuthGuard]},
+  {path:'music', component : MusicComponent,canActivate: [AuthGuard]} 
 ]
 
 @NgModule({
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    MakeHerSleepComponent
+    MakeHerSleepComponent,
+    MusicComponent,
   ],
   imports: [
     BrowserModule,
