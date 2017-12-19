@@ -56,3 +56,25 @@ body {
 .carousel-inner img {
     margin: auto;
   }
+
+  /* make alert float */
+  .alert-floating {
+    position:absolute;
+    right:20px;
+    z-index:1;
+}
+
+/* animation timing for the flash message */
+    @Keyframes flashfade {
+    0% {opacity:0;}
+    20% {opacity:1}
+    80% {opacity:1}
+    90% {opacity:1}
+    100% {opacity:0}
+    }
+/* assign the animation a class name for the flash message */
+    .flashfade {
+    animation-name: flashfade;
+    animation-duration: 3s;
+    display: block;
+    }

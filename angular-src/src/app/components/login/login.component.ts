@@ -34,15 +34,15 @@ export class LoginComponent implements OnInit {
         this.authService.storeUserData(data.token, data.user);
         this.flashMessage.show('Welcome ' + this.username.charAt(0).toUpperCase() + this.username.slice(1).toLowerCase(), {
           //cssClass: 'alert-success',
-          classes: ['alert-success'],
-          timeout: 5000});
+          classes: ['alert-success alert-floating flashfade'],
+          timeout: 3000});
         this.router.navigate(['home']);
       } else {
         console.log(false);
         this.flashMessage.show(data.msg, {
           //cssClass: 'alert-danger',
-          classes: ['alert-danger'],
-          timeout: 5000});
+          classes: ['alert-danger alert-floating flashfade'],
+          timeout: 3000});
         this.router.navigate(['login']);
       }
     });
