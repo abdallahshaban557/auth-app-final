@@ -9,7 +9,6 @@ const config = require('./config/database');
 //Bluebird promise engine
 mongoose.Promise = require('bluebird');
 
-
 // Connect To Database
 mongoose.connect(config.database, { useMongoClient: true });
 
@@ -26,6 +25,7 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 
 const users = require('./routes/users');
+const lists = require('./routes/lists');
 
 // Port Number
 const port = process.env.PORT || 8080;
@@ -45,7 +45,9 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
+//routes
 app.use('/users', users);
+app.use('/lists', lists);
 
 // Index Route
 app.get('/', (req, res) => {
@@ -56,5 +58,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log('Server started on port '+port);
 });
-
-//comments
