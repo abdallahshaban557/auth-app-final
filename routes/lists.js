@@ -15,7 +15,7 @@ router.post('/addParentList', passport.authenticate('jwt', {session:false} ) , (
       children_list_counter: 0,
       created_by: req.user._id
     });
-    Lists.addParentList(newParentList, (err, user) => {
+    Lists.addParentList(newParentList, (err, list) => {
       if(err){
         res.json({success: false, msg:'Failed to add parent list'});
       } else {
@@ -34,7 +34,28 @@ router.post('/addParentList', passport.authenticate('jwt', {session:false} ) , (
   });
 
 
-  router.post
+  router.post('/editListName', passport.authenticate('jwt', {session:false} ) , (req, res, next) => {
+    const List_id = req.body.List_id;
+    const name = req.body.name;
+
+    const newList = null;
+
+    //get the list name
+    Lists.getListById(List_id, (err, list) => {
+        if(err) throw err;
+
+        else{ 
+            Lists.editListName(list, name, (err, updatedList) => {
+            if (err) {
+                throw err;
+            }
+            else {
+                res.json({success: true, msg:'List has been updated', payload: updatedList});
+            }
+        });
+            } 
+    })
+  });
 
 
 //If this line is not added, an error for the router is shown in the terminal

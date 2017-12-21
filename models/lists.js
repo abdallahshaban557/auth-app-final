@@ -36,3 +36,13 @@ const Lists = module.exports = mongoose.model('Lists', ListsSchema);
 module.exports.addParentList = function(NewParentList, callback){
   NewParentList.save(callback);
 }
+
+module.exports.getListById = function(id, callback){
+  Lists.findById(id, callback);
+}
+
+module.exports.editListName = function(list, newName, callback){
+ 
+  list.set({name: newName});
+  list.save(callback);
+};
