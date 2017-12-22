@@ -19,7 +19,7 @@ router.post('/addParentList', passport.authenticate('jwt', {session:false} ) , (
       if(err){
         res.json({success: false, msg:'Failed to add parent list'});
       } else {
-        res.json({success: true, msg:'Parent list added'});
+        res.json({success: true, msg:'Parent list added', payload: list});
       }
     });
   });
