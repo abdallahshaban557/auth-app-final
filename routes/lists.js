@@ -11,11 +11,11 @@ router.post('/addParentList', passport.authenticate('jwt', {session:false} ) , (
     let newParentList = new Lists({
       name: req.body.name.toLowerCase(),
       description: req.body.description,
-      parent_list_id: req.body.parent_list_id,
+      parent_list_id: null,
       children_list_counter: 0,
       created_by: req.user._id
     });
-    Lists.addParentList(newParentList, (err, list) => {
+    Lists.addList(newParentList, (err, list) => {
       if(err){
         res.json({success: false, msg:'Failed to add parent list'});
       } else {
@@ -23,6 +23,25 @@ router.post('/addParentList', passport.authenticate('jwt', {session:false} ) , (
       }
     });
   });
+
+
+//create new child list
+router.post('/addChildList', passport.authenticate('jwt', {session:false} ) , (req, res, next) => {
+  let newChildList = new Lists({
+    name: req.body.name.toLowerCase(),
+    description: req.body.description,
+    parent_list_id: req.body.parent_list_id,
+    children_list_counter: 0,
+    created_by: req.user._id
+  });
+  Lists.addList(newChildList, (err, list) => {
+    if(err){
+      res.json({success: false, msg:'Failed to add child list'});
+    } else {
+      res.json({success: true, msg:'Child list added', payload: list});
+    }
+  });
+});
 
 
 

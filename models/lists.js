@@ -32,9 +32,9 @@ const Lists = module.exports = mongoose.model('Lists', ListsSchema);
 //   User.findById(id, callback);
 // }
 
-//submit new parent list
-module.exports.addParentList = function(NewParentList, callback){
-  NewParentList.save(callback);
+//submit new  list
+module.exports.addList = function(NewList, callback){
+  NewList.save(callback);
 }
 
 module.exports.getListById = function(id, callback){
