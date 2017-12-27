@@ -6,3 +6,6 @@
 PS: Remember to flip the flag in the auth.service.ts for development and prod environment
 
 "npm install cpx -g" must be run in CMD if new computer
+
+
+5a4337d7dd325c20acbbb304

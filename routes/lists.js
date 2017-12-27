@@ -43,7 +43,6 @@ router.post('/addChildList', passport.authenticate('jwt', {session:false} ) , (r
     } 
     
     else {
-      console.log(newChildList.parent_list_id);
       Lists.getListById(newChildList.parent_list_id, (err, Parent_List) => {
         if (err) throw err;
         else{
@@ -61,6 +60,31 @@ router.post('/addChildList', passport.authenticate('jwt', {session:false} ) , (r
   });
 });
 
+
+
+//remove child list
+router.delete('/removeList/:id', passport.authenticate('jwt', {session:false} ) , (req, res, next) => {
+  Lists.getListById(req.params.id, (err, list) => {
+    if (err) throw err;
+    else{
+      console.log(list);
+      if (list.parent_list_id == null){
+        Lists.remove({ parent_list_id: req.params.id}, function(err){
+         if(err) throw err;
+         else {
+          Lists.findOneAndRemove({_id: req.params.id}, (err) => {
+            if (err) throw err;
+            else{
+              res.json({success: true, msg:'Removed list successfully'});
+            }
+           })
+          }
+        })
+      }
+    }
+  })
+});      
+ 
 
 
   router.get('/getallParentList', passport.authenticate('jwt', {session:false} ) , (req, res, next) => {   
@@ -87,7 +111,7 @@ router.post('/addChildList', passport.authenticate('jwt', {session:false} ) , (r
                 throw err;
             }
             else {
-                res.json({success: true, msg:'List has been updated', payload: updatedList});
+                res.json({success: true, msg:'List name has been updated', payload: updatedList});
             }
         });
             } 
