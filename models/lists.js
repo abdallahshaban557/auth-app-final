@@ -12,7 +12,7 @@ const ListsSchema = mongoose.Schema({
     type: String
   },
   parent_list_id: {
-    type: Number
+    type: String
   },
   children_list_counter: {
     type: Number
@@ -41,8 +41,18 @@ module.exports.getListById = function(id, callback){
   Lists.findById(id, callback);
 }
 
+module.exports.incrementChildListCounter = function(list, callback){ 
+  list.set({children_list_counter: ++list.children_list_counter });
+  list.save(callback);
+}
+
+module.exports.decrementChildListCounter = function(list, callback){ 
+  list.set({children_list_counter: --list.children_list_counter });
+  list.save(callback);
+}
+
 module.exports.editListName = function(list, newName, callback){
- 
   list.set({name: newName});
   list.save(callback);
 };
+

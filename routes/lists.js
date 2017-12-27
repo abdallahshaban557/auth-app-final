@@ -34,11 +34,29 @@ router.post('/addChildList', passport.authenticate('jwt', {session:false} ) , (r
     children_list_counter: 0,
     created_by: req.user._id
   });
+ 
+  Global_Parent_List = null;
+
   Lists.addList(newChildList, (err, list) => {
     if(err){
       res.json({success: false, msg:'Failed to add child list'});
-    } else {
-      res.json({success: true, msg:'Child list added', payload: list});
+    } 
+    
+    else {
+      console.log(newChildList.parent_list_id);
+      Lists.getListById(newChildList.parent_list_id, (err, Parent_List) => {
+        if (err) throw err;
+        else{
+ 
+        Global_Parent_List = Parent_List;
+        Lists.incrementChildListCounter(Global_Parent_List, (err, Parent_List_final) => {
+          if (err) throw err;
+          else {
+            res.json({success: true, msg:'Child list added', payload: list});
+          }
+        });
+      }
+      });  
     }
   });
 });
