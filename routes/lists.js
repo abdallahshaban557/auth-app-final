@@ -87,13 +87,20 @@ router.delete('/removeList/:id', passport.authenticate('jwt', {session:false} ) 
  
 
 
-  router.get('/getallParentList', passport.authenticate('jwt', {session:false} ) , (req, res, next) => {   
+  router.get('/getallParentLists', passport.authenticate('jwt', {session:false} ) , (req, res, next) => {   
     Lists.find({parent_list_id:null}, function(err, lists){
         if (err) return handleError(err); //maybe display an error message to the user?
         res.json({success: true, msg:'retrieved parent lists', payload: lists});
     })
   });
 
+
+  router.get('/getallChildLists/:id', passport.authenticate('jwt', {session:false} ) , (req, res, next) => {   
+    Lists.find({parent_list_id: req.params.id}, function(err, lists){
+        if (err) return handleError(err); //maybe display an error message to the user?
+        res.json({success: true, msg:'retrieved parent lists', payload: lists});
+    })
+  });
 
   router.post('/editListName', passport.authenticate('jwt', {session:false} ) , (req, res, next) => {
     const List_id = req.body.List_id;
