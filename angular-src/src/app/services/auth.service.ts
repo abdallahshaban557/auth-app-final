@@ -2,13 +2,11 @@ import { Injectable, isDevMode } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {tokenNotExpired} from 'angular2-jwt';
-import { environment } from '../../environments/environment.prod';
 
 @Injectable()
 export class AuthService {
   authToken: any;
   user: any;
-  isDev:boolean;
 
   constructor(private http:Http) {
     // this.isDev = true; // Change to false before deployment - Not needed since using isDeveMode now
