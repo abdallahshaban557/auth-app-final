@@ -20,6 +20,36 @@ export class ListsService {
       .map(res => res.json());
   }
 
+  addParentList(list){
+    let headers = new Headers();
+    headers.append('Authorization', this.token);
+    headers.append('Content-Type','application/json');
+    let ep = this.prepEndpoint('lists/addParentList')
+    return this.http.post(ep, list, {headers: headers})
+      .map(res => res.json());
+  }
+
+  getChildLists(parent_id){
+    let headers = new Headers();
+    headers.append('Authorization', this.token);
+    headers.append('Content-Type','application/json');
+    let ep = this.prepEndpoint('lists/getallChildLists/'+parent_id);
+    return this.http.get(ep, {headers: headers})
+      .map(res => res.json());
+  }
+
+
+
+  editChildListName(Child_List){
+    let headers = new Headers();
+    headers.append('Authorization', this.token);
+    headers.append('Content-Type','application/json');
+    let ep = this.prepEndpoint('lists/editListName');
+    return this.http.post(ep, Child_List, {headers: headers})
+      .map(res => res.json());
+  }
+
+
   prepEndpoint(ep){
     if(!isDevMode()){
       return ep;  

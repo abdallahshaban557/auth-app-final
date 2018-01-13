@@ -78,3 +78,22 @@ body {
     animation-duration: 3s;
     display: block;
     }
+
+    /*needed for the form when adding lists.*/
+    .form-design {
+        display: inline-block;
+    }
+    /*needed for the form when adding lists.*/
+    .form-group-align {
+        text-align: center;
+        padding-bottom: 25px;
+    }
+    /*needed for the form when adding lists.*/
+    #todo {
+        margin: 0 auto;
+        width: 500px;
+    }
+    /*needed for the form when adding lists.*/
+    a.close {
+      float: right;
+    }

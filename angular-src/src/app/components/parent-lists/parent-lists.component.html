@@ -1,9 +1,104 @@
-<div >
-  <h2 class="page-header"></h2>
-  <ul class="list-group">
-    <li *ngFor="let list of lists" class="list-group-item">{{list.name}}</li>
-  </ul>
+<div class="form-group form-group-align">
+ 
+  <form (submit) = "addNewParentList()" role="form" class = "form-design">
+      <div class="input-group">
+        <input type="text" [(ngModel)] = "added_list.name" class="form-control" placeholder="Your Task" name="task">
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn btn-primary" value="Add">
+        </span>
+      </div>
+  </form>
 </div>
+      <div class="list-group">
+        <button type = "button" *ngFor="let list of lists" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" data-toggle="modal" data-target="#ChildListModal" (click) = "getChildLists(list._id)">{{list.name}} 
+            <span class="badge badge-primary badge-pill">{{list.children_list_counter}} </span>
+        </button>
+      </div>
 
 
-<!-- Email: {{user.email}} -->
+      <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="ChildListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+               
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                
+            </div>
+            <div class="modal-body">
+                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                              <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="Pending" aria-selected="true">Pending</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" id="completed-tab" data-toggle="tab" href="#completed" role="tab" aria-controls="Completed" aria-selected="false">Completed</a>
+                            </li>
+                    </ul>
+
+
+                    <div class="tab-content" id="myTabContent">
+                        <!-- pending -->
+                        <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="list-group">
+                                <div id="exampleAccordion" data-children=".item">
+                                    <div class="item">
+                                        <button type = "button" *ngFor="let list of pending_lists" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion1" role="button" aria-expanded="true" aria-controls="exampleAccordion1">{{list.name}} 
+                                        </button>
+                                        <div id="exampleAccordion1" class="collapse" role="tabpanel">
+
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                          </div>
+                        </div>
+                        <!-- completed -->
+                        <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="list-group">
+                                    
+                                        <div id="CompletedAccordion" data-children=".item">
+                                            
+                                            <div class="item" *ngFor="let list of completed_lists">
+                                              <button type = "button" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" data-toggle="collapse" data-parent="#CompletedAccordion" [attr.href] = "'#' + list._id" role="button" aria-expanded="false" aria-controls="exampleAccordion2">
+                                                {{list.name}}
+                                              </button>
+                                              <div [attr.id]="list._id" class="collapse" role="tabpanel">
+                                                    <form (submit) = "addNewParentList()" role="form" class = "form-design">
+                                                            <div class="input-group">
+                                                              <input type="text" [(ngModel)] = "added_list.name" class="form-control" placeholder="Your Task" name="task">
+                                                              <span class="input-group-btn">
+                                                                <input type="submit" class="btn btn btn-primary" value="Add">
+                                                              </span>
+                                                            </div>
+                                                    </form>
+                                              </div>
+                                            </div>
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+               </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+
+   
+
+
+
+
+
+
+
+    <!-- Form -->
+  

@@ -13,7 +13,8 @@ router.post('/addParentList', passport.authenticate('jwt', {session:false} ) , (
       description: req.body.description,
       parent_list_id: null,
       children_list_counter: 0,
-      created_by: req.user._id
+      created_by: req.user._id,
+      done: req.body.done
     });
     Lists.addList(newParentList, (err, list) => {
       if(err){
@@ -32,7 +33,8 @@ router.post('/addChildList', passport.authenticate('jwt', {session:false} ) , (r
     description: req.body.description,
     parent_list_id: req.body.parent_list_id,
     children_list_counter: 0,
-    created_by: req.user._id
+    created_by: req.user._id,
+    done: req.body.done
   });
  
   Global_Parent_List = null;
@@ -105,8 +107,6 @@ router.delete('/removeList/:id', passport.authenticate('jwt', {session:false} ) 
   router.post('/editListName', passport.authenticate('jwt', {session:false} ) , (req, res, next) => {
     const List_id = req.body.List_id;
     const name = req.body.name;
-
-    const newList = null;
 
     //get the list name
     Lists.getListById(List_id, (err, list) => {
