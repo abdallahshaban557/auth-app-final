@@ -65,8 +65,8 @@ router.post('/addChildList', passport.authenticate('jwt', {session:false} ) , (r
 
 
 //remove list
-router.delete('/removeList', passport.authenticate('jwt', {session:false} ) , (req, res, next) => {
-  Lists.getListById(req.body._id, (err, list) => {
+router.delete('/removeList/:id', passport.authenticate('jwt', {session:false} ) , (req, res, next) => {
+  Lists.getListById(req.params.id, (err, list) => {
     if (err) throw err;
     else{
       console.log(list);
@@ -88,17 +88,18 @@ router.delete('/removeList', passport.authenticate('jwt', {session:false} ) , (r
       }
       else {
         //if child list
-        console.log(req.body);
-        Lists.find({ _id: req.body._id }).remove().exec();
-        Lists.findOne({_id : req.body.parent_list_id}, function(err, parent_list){
+        console.log("reached here");
+  
+        Lists.findOne({ _id : list.parent_list_id}, function(err, parent_list){
           if (err) throw err;
-          else{
+          else {
             console.log("test child");
             parent_list.children_list_counter = --parent_list.children_list_counter;
             parent_list.save();
-            res.json({success: true, msg:'Removed list successfully'});
+            Lists.find({ _id: req.params.id }).remove().exec();
+            res.json( {success: true, msg:'Removed list successfully'} );
           }
-        })
+        });
       }
     }
   })

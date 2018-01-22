@@ -50,6 +50,26 @@ export class ListsService {
   }
 
 
+  switchDone(Child_List){
+    let headers = new Headers();
+    headers.append('Authorization', this.token);
+    headers.append('Content-Type','application/json');
+    let ep = this.prepEndpoint('lists/switchDone');
+    return this.http.put(ep, Child_List, {headers: headers})
+      .map(res => res.json());
+  }
+
+  removeList(Child_List){
+    let headers = new Headers();
+    headers.append('Authorization', this.token);
+    headers.append('Content-Type','application/json');
+    let ep = this.prepEndpoint('lists/removeList');
+    return this.http.delete(ep, Child_List, {headers: headers})
+      .map(res => res.json());
+  }
+
+
+
   prepEndpoint(ep){
     if(!isDevMode()){
       return ep;  
