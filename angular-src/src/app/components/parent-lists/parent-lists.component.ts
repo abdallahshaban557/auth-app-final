@@ -25,6 +25,9 @@ export class ParentListsComponent implements OnInit {
   //added new list
   added_list = new List();
 
+  //variable for parent list that is filled after one of the main lists is clicked
+  parent_list = new List();
+
   user = JSON.parse(localStorage.getItem('user'));
   
 
@@ -62,13 +65,16 @@ export class ParentListsComponent implements OnInit {
   }
 
 
-  getChildLists(Parent_id) {
+  getChildLists(parent_list) {
     //empty any previous lists before adding in the new ones
+
+    this.parent_list = parent_list;
+
     this.child_lists = [];
     this.pending_lists =[];
     this.completed_lists = [];
 
-    this.listsService.getChildLists(Parent_id).subscribe(lists => {
+    this.listsService.getChildLists(parent_list._id).subscribe(lists => {
       //retrieve list from API
       this.child_lists = lists.payload;
       //place list in completed or pending
@@ -90,5 +96,17 @@ export class ParentListsComponent implements OnInit {
       return false;
     });
   }
+
+  editListName(child_list){
+    this.listsService.editListName(child_list).subscribe(data =>{
+      if(data.success){
+        console.log(data.payload);
+      }
+      else{
+        console.log("Something wrong happened");
+      }
+      
+  })
+}
 
 }

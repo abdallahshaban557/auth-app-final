@@ -40,12 +40,12 @@ export class ListsService {
 
 
 
-  editChildListName(Child_List){
+  editListName(Child_List){
     let headers = new Headers();
     headers.append('Authorization', this.token);
     headers.append('Content-Type','application/json');
     let ep = this.prepEndpoint('lists/editListName');
-    return this.http.post(ep, Child_List, {headers: headers})
+    return this.http.put(ep, Child_List, {headers: headers})
       .map(res => res.json());
   }
 
