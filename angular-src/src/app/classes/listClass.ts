@@ -1,4 +1,5 @@
 export class List {
+    public _id: Number;
     public name: String;
     public description: String;
     public parent_list_id: Number;

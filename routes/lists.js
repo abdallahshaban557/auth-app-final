@@ -63,28 +63,22 @@ router.post('/addChildList', passport.authenticate('jwt', {session:false} ) , (r
 });
 
 
-
 //remove list
 router.delete('/removeList/:id', passport.authenticate('jwt', {session:false} ) , (req, res, next) => {
   Lists.getListById(req.params.id, (err, list) => {
     if (err) throw err;
     else{
-      console.log(list);
+      
       if (list.parent_list_id == null){
-        //If parent list
-        Lists.remove({ parent_list_id: req.body._id}, function(err){
-        if(err) throw err;
-        else {
-          Lists.findOneAndRemove({_id: req.body._id}, (err) => {
-          if (err) throw err;
-          else{
-            
-            res.json({success: true, msg:'Removed list successfully'});
-              
-            }
-           })
-          }
-        })
+
+        //if parent list
+
+        //find all lists that have the parent ID and delete them
+        Lists.find({ parent_list_id: req.params.id }).remove().exec();
+        //delete the actual parent list
+        Lists.find({ _id: req.params.id }).remove().exec();
+
+        res.json( {success: true, msg:'Removed Parent list successfully'} );
       }
       else {
         //if child list
@@ -110,7 +104,6 @@ router.put('/switchDone',passport.authenticate('jwt', {session:false} ) , (req, 
   Lists.findOne({_id : req.body._id}, function(err, list){
     if (err) throw err;
     else {
-      console.log("switching done flag");
       if(list.done == 1){
         list.done = 0;
         list.save();

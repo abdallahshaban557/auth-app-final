@@ -29,6 +29,15 @@ export class ListsService {
       .map(res => res.json());
   }
 
+  addChildList(list){
+    let headers = new Headers();
+    headers.append('Authorization', this.token);
+    headers.append('Content-Type','application/json');
+    let ep = this.prepEndpoint('lists/addChildList')
+    return this.http.post(ep, list, {headers: headers})
+      .map(res => res.json());
+  }
+
   getChildLists(parent_id){
     let headers = new Headers();
     headers.append('Authorization', this.token);
@@ -59,12 +68,12 @@ export class ListsService {
       .map(res => res.json());
   }
 
-  removeList(Child_List){
+  removeList(List){
     let headers = new Headers();
     headers.append('Authorization', this.token);
     headers.append('Content-Type','application/json');
-    let ep = this.prepEndpoint('lists/removeList');
-    return this.http.delete(ep, Child_List, {headers: headers})
+    let ep = this.prepEndpoint('lists/removeList/'+List._id);
+    return this.http.delete(ep, {headers: headers})
       .map(res => res.json());
   }
 

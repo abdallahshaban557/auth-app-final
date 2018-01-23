@@ -27,7 +27,7 @@
             </div>
           </li>
           <li data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
-            <a class = "nav-link" [routerLink]="['/main_lists']">To-Do Lists</a>
+            <a class = "nav-link" [routerLink]="['/main_lists']">Our Lists</a>
           </li>
           <li>
             <a data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="authService.loggedIn()" class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
