@@ -3,26 +3,7 @@ body {
     padding-top: 70px; 
 }
 
-/* styling for .jumbotron in homescreen. No longer needed */
-/* .jumbotron
-{   
-    background-image:url('../images/image.jpg');
-    min-height: 600px;
-    background-size: cover;
-    background-position: center;
-    background: contain;
-    color : white; 
-    
- }   */
 
- /* needed for overlay on .jumbotron in homescreen. No longer needed */
- /* .overlay-text { 
-    color: black; 
-    letter-spacing: -1px;  
-    background: rgb(0, 0, 0);
-    background: rgba(216, 216, 223, 0.7);
-    padding: 5px; 
- } */
 
  
  .vertical-bottom {
@@ -78,3 +59,55 @@ body {
     animation-duration: 3s;
     display: block;
     }
+
+    /*needed for the form when adding lists.*/
+    .form-design {
+        display: inline-block;
+    }
+    /*needed for the form when adding lists.*/
+    .form-group-align {
+        text-align: center;
+        padding-bottom: 25px;
+    }
+    /*needed for the form when adding lists.*/
+    #todo {
+        margin: 0 auto;
+        width: 500px;
+    }
+    /*needed for the form when adding lists.*/
+    a.close {
+      float: right;
+    }
+
+
+/* Needed to hide the backdrop on all previous modals for confirming the deletion of a parent list */
+    #confirmation-modal{
+        background: rgba(0,0,0,0.7);
+    }
+
+
+
+    /* nav tab items are for styling and pending and completed tabs in the child list modal */
+    .nav-tabs {
+        border-bottom:none;
+      }
+    
+      .nav-tabs .nav-link.active {
+        background-color:#007bff;
+        border-bottom:#e2e2e2;
+        color: white;
+      }
+      
+      .tab-pane.active {
+        padding:1rem;
+        background-color:#e2e2e2;
+        border-top-right-radius: .5rem;
+        border-top-left-radius: .5rem;
+        margin-bottom:1rem;
+      }
+      
+      .tab-pane:first-child .tab-pane-header {
+        border-top-left-radius: 0;
+      }
+
+ 
