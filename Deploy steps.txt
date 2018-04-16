@@ -1,7 +1,12 @@
+
 1- run "npm run build-prod" on the angular-src folder.
-2- make sure the github repo is fully updated.
+2- make sure the github repo is fully updated (All changes are committed).
 3- run "heroku login" and enter credentials.
 4- run "git push heroku master"
 
 
-"npm install cpx -g" must be run in CMD if new computer
+Setup new computer
+- npm install cpx -g" must be run in CMD if new computer
+- Run "npm install" on root folder, and the angular-src folder for the first run)
+- Run "npm install -g nodemon to be able to run the server
+- Run "npm install -g @angular/cli" to install angular CLI
